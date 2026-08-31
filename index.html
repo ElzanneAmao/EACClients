@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>EAC Clients — Elzanne Amao Consulting</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -37,6 +38,16 @@
   .site-header .container {
     max-width: 1280px;
     margin: 0 auto;
+    display: flex;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .site-header .logo {
+    width: 72px;
+    height: 72px;
+    flex-shrink: 0;
+    border-radius: 6px;
   }
 
   .site-header .eyebrow {
@@ -181,6 +192,8 @@
   /* ── Responsive ────────────────────────────── */
   @media (max-width: 860px) {
     .site-header { padding: 40px 20px 36px; }
+    .site-header .container { flex-direction: column; gap: 16px; }
+    .site-header .logo { width: 56px; height: 56px; }
     .main-content { padding: 40px 20px 60px; }
     .site-footer { padding: 24px 20px; }
     .client-grid { grid-template-columns: 1fr; }
@@ -191,10 +204,13 @@
 
 <header class="site-header">
   <div class="container">
-    <div class="eyebrow">Client Portal</div>
-    <h1>Elzanne Amao Consulting</h1>
-    <p class="subtitle">Quotes, proposals, training plans and project deliverables — organised by client.</p>
-    <span class="accent-rule"></span>
+    <img src="assets/logo.svg" alt="EAC" class="logo">
+    <div>
+      <div class="eyebrow">Client Portal</div>
+      <h1>Elzanne Amao Consulting</h1>
+      <p class="subtitle">Quotes, proposals, training plans and project deliverables — organised by client.</p>
+      <span class="accent-rule"></span>
+    </div>
   </div>
 </header>
 

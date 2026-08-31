@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Meta Advertising Plan — Safely Anchored | EAC</title>
+<link rel="icon" type="image/svg+xml" href="../../assets/favicon.svg">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
 <style>
@@ -30,32 +31,39 @@
     overflow-x: hidden;
   }
 
-  /* ── Sidebar (Desktop) ─────────────────────── */
+  /* ── Sidebar (Desktop) — Dark Moss ─────────── */
   .sidebar {
     display: none;
     position: fixed;
     left: 0; top: 0;
     width: 260px;
     height: 100vh;
-    background: var(--coolwhite);
-    border-right: 1px solid var(--hairline);
+    background: var(--moss);
     flex-direction: column;
-    padding: 40px 0 32px;
+    padding: 32px 0 32px;
     z-index: 40;
     overflow-y: auto;
   }
 
+  .sidebar-logo {
+    display: block;
+    width: 48px;
+    height: 48px;
+    margin: 0 24px 24px;
+    border-radius: 4px;
+  }
+
   .sidebar-brand {
-    padding: 0 24px 32px;
-    border-bottom: 1px solid var(--hairline);
+    padding: 0 24px 28px;
+    border-bottom: 1px solid rgba(184, 205, 212, 0.15);
     margin-bottom: 24px;
   }
 
   .sidebar-brand h2 {
     font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
-    font-size: 1.4rem;
-    color: var(--moss);
+    font-size: 1.3rem;
+    color: var(--coolwhite);
     line-height: 1.25;
     margin-bottom: 4px;
   }
@@ -65,7 +73,8 @@
     font-size: 11px;
     letter-spacing: 0.1em;
     text-transform: uppercase;
-    color: var(--sage);
+    color: var(--seaglass);
+    opacity: 0.82;
   }
 
   .sidebar nav {
@@ -81,35 +90,40 @@
     font-weight: 500;
     font-size: 13px;
     letter-spacing: 0.03em;
-    color: var(--moss);
-    opacity: 0.6;
+    color: rgba(241, 244, 242, 0.55);
     text-decoration: none;
     border-radius: 4px;
     margin-bottom: 2px;
-    transition: background 0.15s, opacity 0.15s;
+    transition: background 0.15s, color 0.15s;
   }
 
   .sidebar nav a:hover {
-    background: var(--white);
-    opacity: 1;
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--coolwhite);
   }
 
   .sidebar nav a.active {
-    background: var(--white);
-    opacity: 1;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--coolwhite);
     border-left: 3px solid var(--seaglass);
     padding-left: 13px;
   }
 
   .sidebar nav a .material-symbols-outlined {
     font-size: 20px;
-    color: var(--sage);
+    color: var(--seaglass);
+    opacity: 0.7;
+  }
+
+  .sidebar nav a.active .material-symbols-outlined,
+  .sidebar nav a:hover .material-symbols-outlined {
+    opacity: 1;
   }
 
   .sidebar-footer {
     margin-top: auto;
     padding: 24px;
-    border-top: 1px solid var(--hairline);
+    border-top: 1px solid rgba(184, 205, 212, 0.15);
   }
 
   .sidebar-footer a {
@@ -120,11 +134,13 @@
     font-size: 13px;
     letter-spacing: 0.04em;
     text-transform: uppercase;
-    color: var(--sage);
+    color: var(--seaglass);
+    opacity: 0.7;
     text-decoration: none;
+    transition: opacity 0.15s;
   }
 
-  .sidebar-footer a:hover { color: var(--moss); }
+  .sidebar-footer a:hover { opacity: 1; }
 
   /* ── Mobile Nav ────────────────────────────── */
   .mobile-nav {
@@ -132,8 +148,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 16px 20px;
-    border-bottom: 1px solid var(--hairline);
-    background: var(--white);
+    background: var(--moss);
     position: sticky;
     top: 0;
     z-index: 50;
@@ -143,17 +158,23 @@
     font-family: 'Cormorant Garamond', serif;
     font-weight: 500;
     font-size: 1.15rem;
-    color: var(--moss);
+    color: var(--coolwhite);
   }
 
   .mobile-nav .back-link {
     font-weight: 500;
     font-size: 13px;
-    color: var(--sage);
+    color: var(--seaglass);
     text-decoration: none;
     display: flex;
     align-items: center;
     gap: 4px;
+  }
+
+  .mobile-nav .logo-small {
+    width: 32px;
+    height: 32px;
+    border-radius: 3px;
   }
 
   /* ── Main Content ──────────────────────────── */
@@ -334,22 +355,132 @@
 
   .budget-table td:first-child { font-weight: 500; }
 
-  .rationale-box {
-    padding: 20px;
+  .budget-table tfoot td {
+    font-weight: 500;
+    border-bottom: none;
+    border-top: 2px solid var(--hairline);
+  }
+
+  /* ── Budget Estimator ──────────────────────── */
+  .estimator-card {
     background: var(--coolwhite);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--sage);
+    padding: 28px 24px;
+    margin-top: 24px;
+  }
+
+  .estimator-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.35rem;
+    color: var(--moss);
+    margin-bottom: 4px;
+  }
+
+  .estimator-intro {
+    font-size: 14px;
+    color: var(--moss);
+    opacity: 0.6;
+    margin-bottom: 24px;
+  }
+
+  .slider-group {
+    margin-bottom: 20px;
+  }
+
+  .slider-label {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: 8px;
+  }
+
+  .slider-label span:first-child {
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--moss);
+  }
+
+  .slider-label .slider-value {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--sage);
+    font-variant-numeric: tabular-nums;
+  }
+
+  input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 4px;
+    background: var(--hairline);
+    border-radius: 2px;
+    outline: none;
+  }
+
+  input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 18px;
+    height: 18px;
+    background: var(--sage);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--white);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+
+  input[type="range"]::-moz-range-thumb {
+    width: 18px;
+    height: 18px;
+    background: var(--sage);
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid var(--white);
+    box-shadow: 0 1px 3px rgba(0,0,0,0.15);
+  }
+
+  .estimate-results {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+    gap: 16px;
+    margin-top: 24px;
+    padding-top: 24px;
     border-top: 1px solid var(--hairline);
   }
 
-  .rationale-box p {
-    font-size: 15px;
-    color: var(--moss);
-    opacity: 0.7;
+  .estimate-stat {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    padding: 16px;
+    text-align: center;
   }
 
-  .rationale-box strong {
-    font-weight: 500;
+  .estimate-stat .stat-value {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    font-size: 1.6rem;
     color: var(--moss);
-    opacity: 1;
+    line-height: 1.2;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .estimate-stat .stat-label {
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-top: 4px;
+  }
+
+  .estimate-note {
+    font-size: 12px;
+    color: var(--moss);
+    opacity: 0.5;
+    margin-top: 16px;
+    font-style: italic;
   }
 
   /* ── Training Cards ────────────────────────── */
@@ -476,6 +607,10 @@
     .resource-grid {
       grid-template-columns: 1fr;
     }
+
+    .estimate-results {
+      grid-template-columns: repeat(2, 1fr);
+    }
   }
 </style>
 </head>
@@ -487,11 +622,12 @@
     <span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span>
     EAC
   </a>
-  <h2>Safely Anchored</h2>
+  <img src="../../assets/logo.svg" alt="EAC" class="logo-small">
 </nav>
 
 <!-- Desktop Sidebar -->
 <aside class="sidebar">
+  <img src="../../assets/logo.svg" alt="EAC" class="sidebar-logo">
   <div class="sidebar-brand">
     <h2>Elzanne Amao Consulting</h2>
     <div class="client-label">Safely Anchored Small School</div>
@@ -585,42 +721,97 @@
             <thead>
               <tr>
                 <th>Month</th>
-                <th>Focus</th>
-                <th>Est. Budget</th>
+                <th>Budget</th>
+                <th>Rationale</th>
               </tr>
             </thead>
             <tbody>
               <tr>
                 <td>September</td>
-                <td>Awareness &amp; Open Day</td>
-                <td>R2,500</td>
+                <td>R2,000</td>
+                <td>Campaign goes live, first impressions in the area</td>
               </tr>
               <tr>
                 <td>October</td>
-                <td>Lead Gen (Evergreen)</td>
-                <td>R1,500</td>
+                <td>R3,000</td>
+                <td>Peak search period after WCED placement outcomes</td>
               </tr>
               <tr>
                 <td>November</td>
-                <td>Lead Gen (Evergreen)</td>
-                <td>R1,500</td>
+                <td>R2,000</td>
+                <td>Quieter month, maintain visibility</td>
               </tr>
               <tr>
                 <td>December</td>
-                <td>Brand Maintenance</td>
-                <td>R1,000</td>
+                <td>R2,000</td>
+                <td>Holiday period, lower activity but late deciders active</td>
               </tr>
               <tr>
                 <td>January</td>
-                <td>Final Enrolment Push</td>
                 <td>R3,000</td>
+                <td>Final push before term starts</td>
               </tr>
             </tbody>
+            <tfoot>
+              <tr>
+                <td>Total</td>
+                <td>R12,000</td>
+                <td></td>
+              </tr>
+            </tfoot>
           </table>
         </div>
-        <div class="rationale-box">
-          <p><strong>Rationale:</strong> Budget is weighted towards peak enrolment periods (Sept/Jan) while maintaining a consistent 'Evergreen' presence to nurture leads throughout the term.</p>
+      </div>
+
+      <!-- Interactive Budget Estimator -->
+      <div class="estimator-card">
+        <h3>What Could This Budget Deliver?</h3>
+        <p class="estimator-intro">Adjust the assumptions below to estimate what R12,000 in Meta advertising could mean for Safely Anchored. These are based on typical South African education-sector benchmarks.</p>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>Cost per 1,000 Impressions (CPM)</span>
+            <span class="slider-value" id="cpm-value">R40</span>
+          </div>
+          <input type="range" id="cpm" min="20" max="100" value="40" step="5">
         </div>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>Cost per Click (CPC)</span>
+            <span class="slider-value" id="cpc-value">R5</span>
+          </div>
+          <input type="range" id="cpc" min="2" max="15" value="5" step="0.5">
+        </div>
+
+        <div class="slider-group">
+          <div class="slider-label">
+            <span>Enquiry Rate (% of clicks)</span>
+            <span class="slider-value" id="conv-value">8%</span>
+          </div>
+          <input type="range" id="conv" min="2" max="20" value="8" step="1">
+        </div>
+
+        <div class="estimate-results">
+          <div class="estimate-stat">
+            <div class="stat-value" id="est-impressions">300,000</div>
+            <div class="stat-label">Impressions</div>
+          </div>
+          <div class="estimate-stat">
+            <div class="stat-value" id="est-clicks">2,400</div>
+            <div class="stat-label">Link Clicks</div>
+          </div>
+          <div class="estimate-stat">
+            <div class="stat-value" id="est-leads">192</div>
+            <div class="stat-label">Enquiries</div>
+          </div>
+          <div class="estimate-stat">
+            <div class="stat-value" id="est-cpl">R63</div>
+            <div class="stat-label">Cost per Enquiry</div>
+          </div>
+        </div>
+
+        <p class="estimate-note">Estimates are indicative and based on typical Meta benchmarks for education in South Africa. Actual results depend on creative quality, targeting precision and seasonal demand.</p>
       </div>
     </section>
 
@@ -697,6 +888,42 @@
 
   </div>
 </main>
+
+<script>
+  var budget = 12000;
+  var cpmSlider = document.getElementById('cpm');
+  var cpcSlider = document.getElementById('cpc');
+  var convSlider = document.getElementById('conv');
+
+  function formatNum(n) {
+    return n.toLocaleString('en-ZA');
+  }
+
+  function update() {
+    var cpm = parseFloat(cpmSlider.value);
+    var cpc = parseFloat(cpcSlider.value);
+    var conv = parseFloat(convSlider.value);
+
+    document.getElementById('cpm-value').textContent = 'R' + cpm;
+    document.getElementById('cpc-value').textContent = 'R' + cpc.toFixed(cpc % 1 === 0 ? 0 : 1);
+    document.getElementById('conv-value').textContent = conv + '%';
+
+    var impressions = Math.round((budget / cpm) * 1000);
+    var clicks = Math.round(budget / cpc);
+    var leads = Math.round(clicks * (conv / 100));
+    var cpl = leads > 0 ? Math.round(budget / leads) : 0;
+
+    document.getElementById('est-impressions').textContent = formatNum(impressions);
+    document.getElementById('est-clicks').textContent = formatNum(clicks);
+    document.getElementById('est-leads').textContent = formatNum(leads);
+    document.getElementById('est-cpl').textContent = 'R' + formatNum(cpl);
+  }
+
+  cpmSlider.addEventListener('input', update);
+  cpcSlider.addEventListener('input', update);
+  convSlider.addEventListener('input', update);
+  update();
+</script>
 
 </body>
 </html>
