@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Advertising Plan — Safely Anchored | EAC</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --moss: #2c3830;
+    --sage: #7a8c6e;
+    --seaglass: #b8cdd4;
+    --coolwhite: #f1f4f2;
+    --white: #ffffff;
+    --hairline: #dde2dd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--moss);
+    background: var(--white);
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Sidebar (Desktop) ─────────────────────── */
+  .sidebar {
+    display: none;
+    position: fixed;
+    left: 0; top: 0;
+    width: 260px;
+    height: 100vh;
+    background: var(--coolwhite);
+    border-right: 1px solid var(--hairline);
+    flex-direction: column;
+    padding: 40px 0 32px;
+    z-index: 40;
+    overflow-y: auto;
+  }
+
+  .sidebar-brand {
+    padding: 0 24px 32px;
+    border-bottom: 1px solid var(--hairline);
+    margin-bottom: 24px;
+  }
+
+  .sidebar-brand h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.4rem;
+    color: var(--moss);
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-brand .client-label {
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+  }
+
+  .sidebar nav {
+    flex: 1;
+    padding: 0 12px;
+  }
+
+  .sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    color: var(--moss);
+    opacity: 0.6;
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    transition: background 0.15s, opacity 0.15s;
+  }
+
+  .sidebar nav a:hover {
+    background: var(--white);
+    opacity: 1;
+  }
+
+  .sidebar nav a.active {
+    background: var(--white);
+    opacity: 1;
+    border-left: 3px solid var(--seaglass);
+    padding-left: 13px;
+  }
+
+  .sidebar nav a .material-symbols-outlined {
+    font-size: 20px;
+    color: var(--sage);
+  }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 24px;
+    border-top: 1px solid var(--hairline);
+  }
+
+  .sidebar-footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--sage);
+    text-decoration: none;
+  }
+
+  .sidebar-footer a:hover { color: var(--moss); }
+
+  /* ── Mobile Nav ────────────────────────────── */
+  .mobile-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--hairline);
+    background: var(--white);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .mobile-nav h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--moss);
+  }
+
+  .mobile-nav .back-link {
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--sage);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  /* ── Main Content ──────────────────────────── */
+  .main-content {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .content-area {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 48px 64px 80px;
+  }
+
+  /* ── Header ────────────────────────────────── */
+  .page-header {
+    margin-bottom: 56px;
+  }
+
+  .page-header .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+  }
+
+  .page-header .eyebrow .dot {
+    width: 9px;
+    height: 9px;
+    background: var(--seaglass);
+  }
+
+  .page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(2rem, 4vw, 3rem);
+    line-height: 1.15;
+    color: var(--moss);
+    margin-bottom: 16px;
+  }
+
+  .page-header .intro {
+    font-size: 17px;
+    color: var(--moss);
+    opacity: 0.7;
+    max-width: 640px;
+  }
+
+  .accent-rule {
+    display: block;
+    width: 56px;
+    height: 2px;
+    background: var(--seaglass);
+    margin-top: 20px;
+  }
+
+  /* ── Sections ──────────────────────────────── */
+  .content-section {
+    margin-bottom: 56px;
+  }
+
+  .section-heading {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 8px;
+  }
+
+  .section-heading .material-symbols-outlined {
+    font-size: 24px;
+    color: var(--sage);
+  }
+
+  .section-heading h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.75rem;
+    color: var(--moss);
+  }
+
+  .section-rule {
+    width: 48px;
+    height: 2px;
+    background: var(--seaglass);
+    margin-bottom: 28px;
+  }
+
+  /* ── Campaign Cards ────────────────────────── */
+  .campaign-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+  }
+
+  .campaign-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--seaglass);
+    padding: 24px;
+    transition: background 0.2s ease;
+    position: relative;
+  }
+
+  .campaign-card:hover { background: var(--coolwhite); }
+
+  .campaign-card .layer-label {
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 8px;
+  }
+
+  .campaign-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.35rem;
+    color: var(--moss);
+    margin-bottom: 12px;
+  }
+
+  .campaign-card p {
+    font-size: 15px;
+    line-height: 1.6;
+    color: var(--moss);
+    opacity: 0.7;
+  }
+
+  .campaign-card .card-icon {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 40px;
+    color: var(--seaglass);
+    opacity: 0.3;
+  }
+
+  /* ── Budget Table ──────────────────────────── */
+  .table-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--seaglass);
+    overflow: hidden;
+  }
+
+  .table-wrap { overflow-x: auto; }
+
+  .budget-table {
+    width: 100%;
+    border-collapse: collapse;
+    text-align: left;
+  }
+
+  .budget-table thead {
+    border-bottom: 1px solid var(--hairline);
+  }
+
+  .budget-table th {
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    padding: 16px 20px;
+  }
+
+  .budget-table td {
+    font-size: 15px;
+    padding: 14px 20px;
+    border-bottom: 1px solid rgba(221, 226, 221, 0.5);
+  }
+
+  .budget-table td:first-child { font-weight: 500; }
+
+  .rationale-box {
+    padding: 20px;
+    background: var(--coolwhite);
+    border-top: 1px solid var(--hairline);
+  }
+
+  .rationale-box p {
+    font-size: 15px;
+    color: var(--moss);
+    opacity: 0.7;
+  }
+
+  .rationale-box strong {
+    font-weight: 500;
+    color: var(--moss);
+    opacity: 1;
+  }
+
+  /* ── Training Cards ────────────────────────── */
+  .training-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 24px;
+  }
+
+  .training-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--seaglass);
+    overflow: hidden;
+    transition: background 0.2s ease;
+  }
+
+  .training-card:hover { background: var(--coolwhite); }
+
+  .training-card .video-placeholder {
+    background: var(--moss);
+    aspect-ratio: 16/9;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .training-card .video-placeholder .material-symbols-outlined {
+    font-size: 48px;
+    color: var(--seaglass);
+    opacity: 0.6;
+  }
+
+  .training-card .card-body {
+    padding: 20px 24px;
+  }
+
+  .training-card h4 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.25rem;
+    color: var(--moss);
+    margin-bottom: 8px;
+  }
+
+  .training-card p {
+    font-size: 15px;
+    color: var(--moss);
+    opacity: 0.7;
+    margin-bottom: 16px;
+  }
+
+  .training-card .link {
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--sage);
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .training-card .link:hover { color: var(--moss); }
+  .training-card .link .material-symbols-outlined { font-size: 16px; }
+
+  /* ── Resource Links ────────────────────────── */
+  .resource-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 16px;
+  }
+
+  .resource-link {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--seaglass);
+    padding: 16px 20px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    text-decoration: none;
+    transition: background 0.2s ease;
+  }
+
+  .resource-link:hover { background: var(--coolwhite); }
+
+  .resource-link .material-symbols-outlined {
+    font-size: 24px;
+    color: var(--sage);
+    flex-shrink: 0;
+  }
+
+  .resource-link .label {
+    font-weight: 500;
+    font-size: 14px;
+    color: var(--moss);
+  }
+
+  .resource-link .sublabel {
+    font-size: 12px;
+    color: var(--sage);
+  }
+
+  /* ── Desktop ───────────────────────────────── */
+  @media (min-width: 861px) {
+    .mobile-nav { display: none; }
+    .sidebar { display: flex; }
+    .main-content { margin-left: 260px; }
+  }
+
+  /* ── Mobile ────────────────────────────────── */
+  @media (max-width: 860px) {
+    .content-area {
+      padding: 32px 20px 60px;
+    }
+
+    .campaign-grid,
+    .training-grid {
+      grid-template-columns: 1fr;
+    }
+
+    .resource-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Mobile Navigation -->
+<nav class="mobile-nav">
+  <a href="../../index.html" class="back-link">
+    <span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span>
+    EAC
+  </a>
+  <h2>Safely Anchored</h2>
+</nav>
+
+<!-- Desktop Sidebar -->
+<aside class="sidebar">
+  <div class="sidebar-brand">
+    <h2>Elzanne Amao Consulting</h2>
+    <div class="client-label">Safely Anchored Small School</div>
+  </div>
+  <nav>
+    <a href="#overview" class="active">
+      <span class="material-symbols-outlined">dashboard</span>
+      Dashboard
+    </a>
+    <a href="#campaign-structure">
+      <span class="material-symbols-outlined">account_tree</span>
+      Campaign Structure
+    </a>
+    <a href="#budget-planning">
+      <span class="material-symbols-outlined">payments</span>
+      Budget Planning
+    </a>
+    <a href="#training-material">
+      <span class="material-symbols-outlined">school</span>
+      Training Material
+    </a>
+    <a href="#resources">
+      <span class="material-symbols-outlined">folder_open</span>
+      Resources
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="../../index.html">
+      <span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span>
+      All Clients
+    </a>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-area">
+
+    <!-- Header -->
+    <header class="page-header" id="overview">
+      <div class="eyebrow">
+        <span class="dot"></span>
+        EAC &times; Safely Anchored
+      </div>
+      <h1>Meta Advertising Plan:<br>Safely Anchored Small School</h1>
+      <p class="intro">Prepared by Elzanne Amao. A comprehensive strategy guide for establishing a robust digital presence and driving meaningful enrolment growth.</p>
+      <span class="accent-rule"></span>
+    </header>
+
+    <!-- Campaign Structure -->
+    <section class="content-section" id="campaign-structure">
+      <div class="section-heading">
+        <span class="material-symbols-outlined">account_tree</span>
+        <h2>Campaign Structure</h2>
+      </div>
+      <div class="section-rule"></div>
+
+      <div class="campaign-grid">
+        <div class="campaign-card">
+          <span class="material-symbols-outlined card-icon">foundation</span>
+          <div class="layer-label">Layer 1</div>
+          <h3>The Campaign</h3>
+          <p>The overarching objective. For this strategy, the primary focus is Lead Generation and Brand Awareness within the local community.</p>
+        </div>
+        <div class="campaign-card">
+          <span class="material-symbols-outlined card-icon">group</span>
+          <div class="layer-label">Layer 2</div>
+          <h3>The Ad Set</h3>
+          <p>Defining the audience, schedule, and budget. This is where we separate our 'Evergreen' approach from seasonal 'Enrolment' pushes.</p>
+        </div>
+        <div class="campaign-card">
+          <span class="material-symbols-outlined card-icon">image</span>
+          <div class="layer-label">Layer 3</div>
+          <h3>The Ad</h3>
+          <p>The actual creative. Videos, images, and copy that parents will see. Authenticity and a 'nurturing' tone are key here.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Budget Planning -->
+    <section class="content-section" id="budget-planning">
+      <div class="section-heading">
+        <span class="material-symbols-outlined">payments</span>
+        <h2>Budget Planning</h2>
+      </div>
+      <div class="section-rule"></div>
+
+      <div class="table-card">
+        <div class="table-wrap">
+          <table class="budget-table">
+            <thead>
+              <tr>
+                <th>Month</th>
+                <th>Focus</th>
+                <th>Est. Budget</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>September</td>
+                <td>Awareness &amp; Open Day</td>
+                <td>R2,500</td>
+              </tr>
+              <tr>
+                <td>October</td>
+                <td>Lead Gen (Evergreen)</td>
+                <td>R1,500</td>
+              </tr>
+              <tr>
+                <td>November</td>
+                <td>Lead Gen (Evergreen)</td>
+                <td>R1,500</td>
+              </tr>
+              <tr>
+                <td>December</td>
+                <td>Brand Maintenance</td>
+                <td>R1,000</td>
+              </tr>
+              <tr>
+                <td>January</td>
+                <td>Final Enrolment Push</td>
+                <td>R3,000</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="rationale-box">
+          <p><strong>Rationale:</strong> Budget is weighted towards peak enrolment periods (Sept/Jan) while maintaining a consistent 'Evergreen' presence to nurture leads throughout the term.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Training Material -->
+    <section class="content-section" id="training-material">
+      <div class="section-heading">
+        <span class="material-symbols-outlined">school</span>
+        <h2>Training Material</h2>
+      </div>
+      <div class="section-rule"></div>
+
+      <div class="training-grid">
+        <div class="training-card">
+          <div class="video-placeholder">
+            <span class="material-symbols-outlined">play_circle</span>
+          </div>
+          <div class="card-body">
+            <h4>Meta Ads Manager Basics</h4>
+            <p>Learn how to navigate the dashboard and set up your first campaign.</p>
+            <a href="https://www.facebook.com/business/help" target="_blank" class="link">
+              Meta Help Centre
+              <span class="material-symbols-outlined">open_in_new</span>
+            </a>
+          </div>
+        </div>
+        <div class="training-card">
+          <div class="video-placeholder">
+            <span class="material-symbols-outlined">play_circle</span>
+          </div>
+          <div class="card-body">
+            <h4>Audience Targeting for Schools</h4>
+            <p>Strategies for reaching parents in your local geographic area.</p>
+            <a href="https://www.facebook.com/business/help" target="_blank" class="link">
+              Meta Help Centre
+              <span class="material-symbols-outlined">open_in_new</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Resources -->
+    <section class="content-section" id="resources">
+      <div class="section-heading">
+        <span class="material-symbols-outlined">folder_open</span>
+        <h2>Resources</h2>
+      </div>
+      <div class="section-rule"></div>
+
+      <div class="resource-grid">
+        <a href="#" class="resource-link">
+          <span class="material-symbols-outlined">description</span>
+          <div>
+            <div class="label">Strategy PDF</div>
+            <div class="sublabel">Download Guide</div>
+          </div>
+        </a>
+        <a href="#" class="resource-link">
+          <span class="material-symbols-outlined">link</span>
+          <div>
+            <div class="label">Brand Assets</div>
+            <div class="sublabel">Google Drive</div>
+          </div>
+        </a>
+        <a href="#" class="resource-link">
+          <span class="material-symbols-outlined">calendar_month</span>
+          <div>
+            <div class="label">Content Calendar</div>
+            <div class="sublabel">Shared Sheet</div>
+          </div>
+        </a>
+      </div>
+    </section>
+
+  </div>
+</main>
+
+</body>
+</html>

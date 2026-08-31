@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>EAC Clients — Elzanne Amao Consulting</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --moss: #2c3830;
+    --sage: #7a8c6e;
+    --seaglass: #b8cdd4;
+    --coolwhite: #f1f4f2;
+    --white: #ffffff;
+    --hairline: #dde2dd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.6;
+    color: var(--moss);
+    background: var(--white);
+    min-height: 100vh;
+  }
+
+  /* ── Header ────────────────────────────────── */
+  .site-header {
+    background: var(--moss);
+    color: var(--coolwhite);
+    padding: 64px 64px 56px;
+  }
+
+  .site-header .container {
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .site-header .eyebrow {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--seaglass);
+    margin-bottom: 16px;
+  }
+
+  .site-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    line-height: 1.15;
+    color: var(--white);
+    margin-bottom: 12px;
+  }
+
+  .site-header .subtitle {
+    font-size: 17px;
+    color: rgba(241, 244, 242, 0.78);
+    max-width: 600px;
+  }
+
+  .accent-rule {
+    display: block;
+    width: 64px;
+    height: 2px;
+    background: var(--seaglass);
+    margin: 20px 0 0;
+  }
+
+  /* ── Main ──────────────────────────────────── */
+  .main-content {
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 56px 64px 80px;
+  }
+
+  .section-label {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 24px;
+  }
+
+  /* ── Client Cards ──────────────────────────── */
+  .client-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 24px;
+  }
+
+  .client-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--seaglass);
+    padding: 28px 24px;
+    transition: background 0.2s ease;
+  }
+
+  .client-card:hover {
+    background: var(--coolwhite);
+  }
+
+  .client-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.6rem;
+    line-height: 1.25;
+    color: var(--moss);
+    margin-bottom: 6px;
+  }
+
+  .client-card .client-type {
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 12px;
+  }
+
+  .client-card p {
+    font-size: 15px;
+    color: var(--moss);
+    opacity: 0.7;
+    margin-bottom: 20px;
+  }
+
+  .doc-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .doc-list li a {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--sage);
+    text-decoration: none;
+    transition: color 0.15s ease;
+  }
+
+  .doc-list li a:hover {
+    color: var(--moss);
+  }
+
+  .doc-list li a .dot {
+    display: inline-block;
+    width: 9px;
+    height: 9px;
+    background: var(--seaglass);
+    flex-shrink: 0;
+  }
+
+  /* ── Footer ────────────────────────────────── */
+  .site-footer {
+    border-top: 1px solid var(--hairline);
+    padding: 32px 64px;
+    max-width: 1280px;
+    margin: 0 auto;
+  }
+
+  .site-footer p {
+    font-size: 13px;
+    color: var(--sage);
+  }
+
+  /* ── Responsive ────────────────────────────── */
+  @media (max-width: 860px) {
+    .site-header { padding: 40px 20px 36px; }
+    .main-content { padding: 40px 20px 60px; }
+    .site-footer { padding: 24px 20px; }
+    .client-grid { grid-template-columns: 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<header class="site-header">
+  <div class="container">
+    <div class="eyebrow">Client Portal</div>
+    <h1>Elzanne Amao Consulting</h1>
+    <p class="subtitle">Quotes, proposals, training plans and project deliverables — organised by client.</p>
+    <span class="accent-rule"></span>
+  </div>
+</header>
+
+<main class="main-content">
+  <div class="section-label">Clients</div>
+
+  <div class="client-grid">
+
+    <div class="client-card">
+      <h3>Safely Anchored Small School</h3>
+      <div class="client-type">Education</div>
+      <p>Digital marketing strategy and Meta advertising training for a small school in the Western Cape.</p>
+      <ul class="doc-list">
+        <li><a href="clients/safely-anchored/meta-training.html"><span class="dot"></span>Meta Advertising Plan</a></li>
+      </ul>
+    </div>
+
+  </div>
+</main>
+
+<footer class="site-footer">
+  <p>&copy; 2026 Elzanne Amao Consulting. All rights reserved.</p>
+</footer>
+
+</body>
+</html>
