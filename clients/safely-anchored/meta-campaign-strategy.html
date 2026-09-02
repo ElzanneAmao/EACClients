@@ -443,44 +443,37 @@
 
   .link-button:hover { background: var(--moss); color: var(--white); }
 
-  /* ── Video Cards ────────────────────────────── */
-  .video-card {
-    background: var(--white);
-    border: 1px solid var(--hairline);
-    border-left: 3px solid var(--seaglass);
+  /* ── Video Thumbnails ───────────────────────── */
+  .video-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
     margin: 20px 0;
-    overflow: hidden;
   }
 
-  .video-embed {
-    position: relative;
+  .video-thumb {
+    text-decoration: none;
+    display: block;
+  }
+
+  .video-thumb img {
     width: 100%;
-    padding-top: 56.25%;
-    background: #000;
+    border-radius: 4px;
+    border: 1px solid var(--hairline);
+    aspect-ratio: 16/9;
+    object-fit: cover;
+    transition: opacity 0.15s;
   }
 
-  .video-embed iframe {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-  }
+  .video-thumb:hover img { opacity: 0.85; }
 
-  .video-info {
-    padding: 16px 20px;
-  }
-
-  .video-info h3 {
-    margin-top: 0;
-    margin-bottom: 6px;
-    font-size: 16px;
-  }
-
-  .video-info p {
-    font-size: 14px;
+  .video-thumb span {
+    display: block;
+    font-size: 12px;
+    font-weight: 500;
     color: var(--sage);
-    margin-bottom: 0;
+    margin-top: 8px;
+    line-height: 1.4;
   }
 
   /* ── Footer ────────────────────────────────── */
@@ -506,6 +499,7 @@
     .competitor-grid { grid-template-columns: 1fr 1fr; }
     .ad-meta-row { flex-direction: column; gap: 2px; }
     .ad-url-row { flex-direction: column; gap: 4px; }
+    .video-grid { grid-template-columns: 1fr; }
   }
 
   @media print {
@@ -1065,34 +1059,19 @@ We're enrolling for January 2027, Grade R to Grade 5. Book a visit and see the s
 
     <p>These video tutorials cover the fundamentals of setting up and running Meta ads. Watch them in order for a solid grounding, or dip in as reference when working through a specific step in Ads Manager.</p>
 
-    <div class="video-card">
-      <div class="video-embed">
-        <iframe src="https://www.youtube.com/embed/t-6c16BH-0U" title="How to Run Meta Ads For Beginners" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="video-info">
-        <h3>How to Run Meta Ads For Beginners</h3>
-        <p>Meta Ads Tutorial 2026 &mdash; A comprehensive walkthrough of setting up your first Meta advertising campaign from scratch.</p>
-      </div>
-    </div>
-
-    <div class="video-card">
-      <div class="video-embed">
-        <iframe src="https://www.youtube.com/embed/h839wnSKZXs" title="Facebook Ads Tutorial - 2026 Full Guide for Beginners" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="video-info">
-        <h3>Facebook Ads Tutorial</h3>
-        <p>2026 Full Guide for Beginners &mdash; Step-by-step guide covering campaign creation, audience targeting, and budget management.</p>
-      </div>
-    </div>
-
-    <div class="video-card">
-      <div class="video-embed">
-        <iframe src="https://www.youtube.com/embed/fkZSqrqwjW0" title="How to Write Meta Ad Copy That Converts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-      </div>
-      <div class="video-info">
-        <h3>How to Write Meta Ad Copy That Converts</h3>
-        <p>Facebook Ad Copywriting Tutorial &mdash; Practical techniques for writing ad text that drives action, directly relevant to the ads in this strategy.</p>
-      </div>
+    <div class="video-grid">
+      <a href="https://www.youtube.com/watch?v=t-6c16BH-0U" target="_blank" class="video-thumb">
+        <img src="https://img.youtube.com/vi/t-6c16BH-0U/mqdefault.jpg" alt="How to Run Meta Ads For Beginners">
+        <span>How to Run Meta Ads For Beginners (2026)</span>
+      </a>
+      <a href="https://www.youtube.com/watch?v=h839wnSKZXs" target="_blank" class="video-thumb">
+        <img src="https://img.youtube.com/vi/h839wnSKZXs/mqdefault.jpg" alt="Facebook Ads Tutorial">
+        <span>Facebook Ads Tutorial &mdash; Full Guide for Beginners</span>
+      </a>
+      <a href="https://www.youtube.com/watch?v=fkZSqrqwjW0" target="_blank" class="video-thumb">
+        <img src="https://img.youtube.com/vi/fkZSqrqwjW0/mqdefault.jpg" alt="How to Write Meta Ad Copy That Converts">
+        <span>How to Write Meta Ad Copy That Converts</span>
+      </a>
     </div>
 
     <p class="doc-footer">Elzanne Amao &middot; Content and communications strategy &middot; Cape Town</p>
