@@ -1,0 +1,1073 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meta Campaign Strategy — Safely Anchored | EAC</title>
+<link rel="icon" type="image/png" href="../../assets/Favicon.png">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --moss: #2c3830;
+    --sage: #7a8c6e;
+    --seaglass: #b8cdd4;
+    --coolwhite: #f1f4f2;
+    --white: #ffffff;
+    --hairline: #dde2dd;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    font-size: 16px;
+    line-height: 1.65;
+    color: var(--moss);
+    background: var(--white);
+    display: flex;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  /* ── Sidebar (Desktop) — Dark Moss ─────────── */
+  .sidebar {
+    display: none;
+    position: fixed;
+    left: 0; top: 0;
+    width: 260px;
+    height: 100vh;
+    background: var(--moss);
+    flex-direction: column;
+    padding: 32px 0 32px;
+    z-index: 40;
+    overflow-y: auto;
+  }
+
+  .sidebar-logo {
+    display: block;
+    width: 120px;
+    margin: 0 24px 24px;
+    border-radius: 4px;
+  }
+
+  .sidebar-brand {
+    padding: 0 24px 28px;
+    border-bottom: 1px solid rgba(184, 205, 212, 0.15);
+    margin-bottom: 24px;
+  }
+
+  .sidebar-brand h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.3rem;
+    color: var(--coolwhite);
+    line-height: 1.25;
+    margin-bottom: 4px;
+  }
+
+  .sidebar-brand .client-label {
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--seaglass);
+    opacity: 0.82;
+  }
+
+  .sidebar nav {
+    flex: 1;
+    padding: 0 12px;
+  }
+
+  .sidebar nav a {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 10px 16px;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+    color: rgba(241, 244, 242, 0.55);
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 2px;
+    transition: background 0.15s, color 0.15s;
+  }
+
+  .sidebar nav a:hover {
+    background: rgba(255, 255, 255, 0.08);
+    color: var(--coolwhite);
+  }
+
+  .sidebar nav a.active {
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--coolwhite);
+    border-left: 3px solid var(--seaglass);
+    padding-left: 13px;
+  }
+
+  .sidebar nav a .material-symbols-outlined {
+    font-size: 20px;
+    color: var(--seaglass);
+    opacity: 0.7;
+  }
+
+  .sidebar nav a.active .material-symbols-outlined,
+  .sidebar nav a:hover .material-symbols-outlined { opacity: 1; }
+
+  .sidebar-footer {
+    margin-top: auto;
+    padding: 24px;
+    border-top: 1px solid rgba(184, 205, 212, 0.15);
+  }
+
+  .sidebar-footer a {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--seaglass);
+    opacity: 0.7;
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+
+  .sidebar-footer a:hover { opacity: 1; }
+
+  /* ── Mobile Nav ────────────────────────────── */
+  .mobile-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 20px;
+    background: var(--moss);
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+
+  .mobile-nav h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.15rem;
+    color: var(--coolwhite);
+  }
+
+  .mobile-nav .back-link {
+    font-weight: 500;
+    font-size: 13px;
+    color: var(--seaglass);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+
+  .mobile-nav .logo-small {
+    width: 32px;
+    height: 32px;
+    border-radius: 3px;
+  }
+
+  /* ── Main Content ──────────────────────────── */
+  .main-content {
+    flex: 1;
+    overflow-y: auto;
+  }
+
+  .content-area {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 24px 80px;
+  }
+
+  /* ── Header ────────────────────────────────── */
+  .page-header { margin-bottom: 48px; }
+
+  .page-header .eyebrow {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--sage);
+    margin-bottom: 16px;
+  }
+
+  .page-header .eyebrow .dot {
+    width: 9px;
+    height: 9px;
+    background: var(--seaglass);
+  }
+
+  .page-header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: clamp(1.8rem, 4vw, 2.5rem);
+    line-height: 1.15;
+    color: var(--moss);
+    margin-bottom: 8px;
+  }
+
+  .page-header .subtitle {
+    font-size: 14px;
+    color: var(--sage);
+  }
+
+  .accent-rule {
+    display: block;
+    width: 56px;
+    height: 2px;
+    background: var(--seaglass);
+    margin-top: 20px;
+  }
+
+  /* ── Section Headings ──────────────────────── */
+  h2 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.5rem;
+    color: var(--moss);
+    margin-top: 56px;
+    margin-bottom: 8px;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--seaglass);
+  }
+
+  h3 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 17px;
+    color: var(--moss);
+    margin-top: 32px;
+    margin-bottom: 12px;
+  }
+
+  h4 {
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 500;
+    font-size: 15px;
+    color: var(--moss);
+    margin-top: 24px;
+    margin-bottom: 8px;
+  }
+
+  p { margin-bottom: 12px; }
+
+  a { color: var(--sage); }
+
+  ul { margin: 12px 0; padding-left: 20px; }
+  li { margin-bottom: 8px; }
+
+  hr {
+    border: none;
+    border-top: 1px solid var(--hairline);
+    margin: 48px 0;
+  }
+
+  code {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 13px;
+    background: var(--coolwhite);
+    padding: 2px 6px;
+    border-radius: 3px;
+  }
+
+  /* ── Callout Boxes ─────────────────────────── */
+  .goal-box {
+    background: var(--coolwhite);
+    border-left: 3px solid var(--moss);
+    padding: 20px 24px;
+    margin: 24px 0;
+  }
+
+  .goal-box p { margin-bottom: 8px; }
+  .goal-box p:last-child { margin-bottom: 0; }
+
+  .tip-box {
+    background: var(--coolwhite);
+    border-left: 3px solid var(--sage);
+    padding: 14px 20px;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+
+  .tip-box strong { color: var(--sage); }
+
+  .note-box {
+    background: #fffbeb;
+    border-left: 3px solid #c4960e;
+    padding: 16px 20px;
+    margin: 20px 0;
+    font-size: 14px;
+  }
+
+  /* ── Tables ────────────────────────────────── */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 16px 0 24px;
+    font-size: 14px;
+  }
+
+  th {
+    background: var(--coolwhite);
+    text-align: left;
+    padding: 10px 12px;
+    font-weight: 500;
+    font-size: 11px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--sage);
+    border-bottom: 2px solid var(--hairline);
+  }
+
+  td {
+    padding: 10px 12px;
+    border-bottom: 1px solid rgba(221, 226, 221, 0.5);
+    vertical-align: top;
+  }
+
+  tr:last-child td { border-bottom: none; }
+
+  .table-wrap { overflow-x: auto; }
+
+  /* ── Images ────────────────────────────────── */
+  .screenshot {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid var(--hairline);
+    margin: 16px 0;
+  }
+
+  .screenshot-pair {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin: 16px 0;
+  }
+
+  .screenshot-pair img {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid var(--hairline);
+  }
+
+  .competitor-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 16px;
+    margin: 20px 0;
+  }
+
+  .competitor-img {
+    width: 100%;
+    border-radius: 4px;
+    border: 1px solid var(--hairline);
+  }
+
+  /* ── Ad Cards ──────────────────────────────── */
+  .ad-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--seaglass);
+    padding: 24px;
+    margin: 24px 0;
+  }
+
+  .ad-card-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 500;
+    font-size: 1.2rem;
+    color: var(--moss);
+    margin-bottom: 4px;
+  }
+
+  .ad-card-format {
+    font-size: 13px;
+    color: var(--sage);
+    margin-bottom: 16px;
+    font-style: italic;
+  }
+
+  .ad-copy {
+    background: var(--coolwhite);
+    border: 1px solid var(--hairline);
+    padding: 16px 20px;
+    margin: 12px 0;
+    white-space: pre-line;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+
+  .ad-meta { margin-top: 16px; font-size: 14px; }
+
+  .ad-meta-row {
+    display: flex;
+    gap: 12px;
+    padding: 6px 0;
+    border-bottom: 1px solid var(--coolwhite);
+  }
+
+  .ad-meta-row:last-child { border-bottom: none; }
+
+  .ad-meta-label {
+    font-weight: 500;
+    color: var(--sage);
+    min-width: 130px;
+    flex-shrink: 0;
+  }
+
+  .ad-urls {
+    background: var(--coolwhite);
+    border: 1px solid var(--hairline);
+    padding: 16px 18px;
+    margin-top: 16px;
+    font-size: 13px;
+  }
+
+  .ad-urls h4 {
+    font-size: 11px;
+    font-weight: 500;
+    color: var(--sage);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin: 0 0 12px 0;
+  }
+
+  .ad-url-row {
+    display: flex;
+    gap: 12px;
+    padding: 8px 0;
+    border-bottom: 1px solid var(--hairline);
+    align-items: baseline;
+  }
+
+  .ad-url-row:last-child { border-bottom: none; }
+
+  .ad-url-label {
+    font-weight: 500;
+    color: var(--sage);
+    min-width: 120px;
+    flex-shrink: 0;
+    font-size: 12px;
+  }
+
+  .ad-url-value {
+    font-family: 'SF Mono', 'Fira Code', monospace;
+    font-size: 12px;
+    color: var(--moss);
+    word-break: break-all;
+    background: var(--white);
+    padding: 6px 10px;
+    border: 1px solid var(--hairline);
+    flex: 1;
+  }
+
+  /* ── Link Button ───────────────────────────── */
+  .link-button {
+    display: inline-block;
+    background: var(--sage);
+    color: var(--coolwhite);
+    padding: 8px 16px;
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 8px 0;
+    transition: background 0.15s;
+  }
+
+  .link-button:hover { background: var(--moss); color: var(--white); }
+
+  /* ── Footer ────────────────────────────────── */
+  .doc-footer {
+    margin-top: 60px;
+    padding-top: 20px;
+    border-top: 1px solid var(--hairline);
+    color: var(--sage);
+    font-size: 13px;
+  }
+
+  /* ── Desktop ───────────────────────────────── */
+  @media (min-width: 861px) {
+    .mobile-nav { display: none; }
+    .sidebar { display: flex; }
+    .main-content { margin-left: 260px; }
+  }
+
+  /* ── Mobile ────────────────────────────────── */
+  @media (max-width: 860px) {
+    .content-area { padding: 32px 20px 60px; }
+    .screenshot-pair { grid-template-columns: 1fr; }
+    .competitor-grid { grid-template-columns: 1fr 1fr; }
+    .ad-meta-row { flex-direction: column; gap: 2px; }
+    .ad-url-row { flex-direction: column; gap: 4px; }
+  }
+
+  @media print {
+    .sidebar, .mobile-nav { display: none !important; }
+    .main-content { margin-left: 0 !important; }
+    .content-area { max-width: 100%; padding: 20px; }
+    .ad-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Mobile Navigation -->
+<nav class="mobile-nav">
+  <a href="../../index.html" class="back-link">
+    <span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span>
+    EAC
+  </a>
+  <img src="../../assets/logo.svg" alt="EAC" class="logo-small">
+</nav>
+
+<!-- Desktop Sidebar -->
+<aside class="sidebar">
+  <img src="../../assets/logo.svg" alt="EAC" class="sidebar-logo">
+  <div class="sidebar-brand">
+    <h2>Elzanne Amao Consulting</h2>
+    <div class="client-label">Safely Anchored Small School</div>
+  </div>
+  <nav>
+    <a href="#top" class="active">
+      <span class="material-symbols-outlined">dashboard</span>
+      Overview
+    </a>
+    <a href="#ad-formats">
+      <span class="material-symbols-outlined">image</span>
+      Ad Formats
+    </a>
+    <a href="#competitive">
+      <span class="material-symbols-outlined">groups</span>
+      Competitive Positioning
+    </a>
+    <a href="#campaign-structure">
+      <span class="material-symbols-outlined">account_tree</span>
+      Campaign Structure
+    </a>
+    <a href="#ad-sets">
+      <span class="material-symbols-outlined">tune</span>
+      Ad Sets
+    </a>
+    <a href="#ads">
+      <span class="material-symbols-outlined">ads_click</span>
+      Ads
+    </a>
+    <a href="#budget">
+      <span class="material-symbols-outlined">payments</span>
+      Budget
+    </a>
+    <a href="#timeline">
+      <span class="material-symbols-outlined">calendar_month</span>
+      Timeline
+    </a>
+    <a href="#tips">
+      <span class="material-symbols-outlined">lightbulb</span>
+      Practical Tips
+    </a>
+  </nav>
+  <div class="sidebar-footer">
+    <a href="../../index.html">
+      <span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span>
+      All Clients
+    </a>
+  </div>
+</aside>
+
+<!-- Main Content -->
+<main class="main-content">
+  <div class="content-area" id="top">
+
+    <!-- Header -->
+    <header class="page-header">
+      <div class="eyebrow">
+        <span class="dot"></span>
+        EAC &times; Safely Anchored
+      </div>
+      <h1>Meta Campaign Strategy</h1>
+      <p class="subtitle">Safely Anchored Small School &middot; Prepared by Elzanne Amao &middot; September 2026</p>
+      <span class="accent-rule"></span>
+    </header>
+
+    <div class="goal-box">
+      <p><strong>Goal:</strong> Parent sees Meta ad &rarr; visits landing page &rarr; completes lead form &rarr; school books a visit &rarr; trial day &rarr; enrolment.</p>
+      <p><strong>Primary:</strong> Enrolments for January 2027</p>
+      <p><strong>Secondary:</strong> Late enrolments for the remainder of 2026</p>
+      <p><strong>Landing page:</strong> <code>safelyanchored.co.za/enrol-2027</code></p>
+    </div>
+
+    <!-- 1. Ad Formats -->
+    <h2 id="ad-formats">1. Ad Formats</h2>
+
+    <h3>Static images</h3>
+    <p>A single image with or without text overlay. Simplest to produce. A strong photo of children in a real classroom or playground moment works harder than a designed graphic.</p>
+    <p><strong>Specs:</strong> 1080 &times; 1080px (square, feed) and 1080 &times; 1920px (vertical, Stories).</p>
+
+    <h3>Video</h3>
+    <p>Short video filmed at the school. The strongest format for giving parents a sense of what the school feels like, and Meta's algorithm tends to favour video. A 15&ndash;30 second clip filmed on a phone is more authentic than a scripted production.</p>
+    <p><strong>Specs:</strong> 1080 &times; 1080px or 1080 &times; 1920px. 15&ndash;30 seconds. The first 3 seconds must establish what the viewer is looking at.</p>
+
+    <h3>Motion graphics</h3>
+    <p>A static image with simple movement &mdash; text appearing line by line, a gentle zoom, a swipe between images. Canva can produce these.</p>
+    <p><strong>Specs:</strong> 1080 &times; 1080px or 1080 &times; 1920px, 6&ndash;15 seconds.</p>
+
+    <hr>
+
+    <!-- 2. Competitive Positioning -->
+    <h2 id="competitive">2. Competitive Positioning</h2>
+
+    <p>The schools advertising in this area fall into two patterns. Larger schools lead with institutional credentials (matric pass rates, campus facilities, accreditation logos). Smaller schools lead with philosophy (play-based learning, curiosity, values). Both approaches are generic enough that you could swap the school name and the copy would still work.</p>
+
+    <p>You can see what other schools are running by searching the <a href="https://www.facebook.com/ads/library/" target="_blank">Meta Ad Library</a>. Select "South Africa" and search by school name.</p>
+
+    <img src="images/img_01.png" class="screenshot" alt="Meta Ad Library search">
+
+    <h3>What the neighbours are running</h3>
+
+    <div class="competitor-grid">
+      <img src="images/img_02.png" class="competitor-img" alt="Generation Schools ad">
+      <img src="images/img_03.png" class="competitor-img" alt="Generation Schools ad">
+      <img src="images/img_04.png" class="competitor-img" alt="Generation Schools ad">
+      <img src="images/img_05.png" class="competitor-img" alt="Generation Schools ad">
+    </div>
+
+    <p><strong>Generation Schools Sunningdale</strong> &mdash; generic headlines ("Your child's future starts here"), facilities-focused creative, and "100% off enrolment fees" which undercuts premium positioning.</p>
+
+    <div class="competitor-grid">
+      <img src="images/img_06.png" class="competitor-img" alt="Elkanah House ad">
+      <img src="images/img_07.png" class="competitor-img" alt="Elkanah House ad">
+    </div>
+
+    <p><strong>Elkanah House</strong> &mdash; the Open Day ad is strong (real photo, clear event details). The Van Gogh quote post is filler content being boosted.</p>
+
+    <div class="competitor-grid">
+      <img src="images/img_08.png" class="competitor-img" alt="Riverside College ad">
+      <img src="images/img_09.png" class="competitor-img" alt="Dibber ad">
+    </div>
+
+    <p><strong>Riverside College</strong> &mdash; text-heavy, hashtag-stuffed, leads with credentials. Meta's "Low impression count" tag says it all.</p>
+    <p><strong>Dibber</strong> &mdash; interesting philosophical copy, but generic enough to apply to any Montessori-style school.</p>
+
+    <h3>Safely Anchored's advantage</h3>
+
+    <p>Safely Anchored's story is specific and hard to copy. The school grew out of a family's transport and aftercare business already known across Sunningdale, Parklands, and Table View. Max 20 per class means the individual attention claim is credible. And the conversion rate from enquiry to enrolment is near-total, so the ads just need to get a parent through the door.</p>
+
+    <p>None of the competitors are using parent testimonials. Ads 2 and 6 give Safely Anchored something the neighbours don't have.</p>
+
+    <hr>
+
+    <!-- 3. Campaign Structure -->
+    <h2 id="campaign-structure">3. Campaign Structure</h2>
+
+    <div class="tip-box">
+      <strong>Tip:</strong> Budgets are set at campaign level. Meta distributes spend between your ad sets automatically (CBO).
+    </div>
+
+    <img src="images/img_10.png" class="screenshot" alt="Campaign level view">
+    <img src="images/img_11.png" class="screenshot" alt="Campaign settings">
+
+    <a href="https://adsmanager.facebook.com/adsmanager/manage/campaigns/edit/standalone?act=1424632942877117&business_id=1935737890176012&selected_campaign_ids=120260256870700537&selected_adset_ids=120260273081530537&treenav=true&nav_source=business_manager" class="link-button" target="_blank">Open campaign in Ads Manager &rarr;</a>
+
+    <table>
+      <tr><th>Setting</th><th>Value</th></tr>
+      <tr><td>Campaign name</td><td>SASS 2027 | EAC | Leads | CBO On</td></tr>
+      <tr><td>Objective</td><td>Leads</td></tr>
+      <tr><td>Budget optimisation (CBO)</td><td>On &mdash; Campaign budget, R67.00 daily</td></tr>
+      <tr><td>Special ad categories</td><td>None</td></tr>
+    </table>
+
+    <hr>
+
+    <!-- 4. Ad Sets -->
+    <h2 id="ad-sets">4. Ad Sets</h2>
+
+    <div class="tip-box">
+      <strong>Tip:</strong> Your campaign dates and schedule are set at ad set level, not campaign level. Each ad set can have its own start and end date.
+    </div>
+
+    <img src="images/img_12.png" class="screenshot" alt="Ad sets view">
+
+    <a href="https://adsmanager.facebook.com/adsmanager/manage/adsets?act=1424632942877117&business_id=1935737890176012&selected_campaign_ids=120260256870700537&selected_adset_ids=120260256870690537%2C120260273081530537&treenav=true&nav_source=business_manager" class="link-button" target="_blank">Open ad sets in Ads Manager &rarr;</a>
+
+    <h3>Ad Set 1 &mdash; Evergreen</h3>
+    <p>Runs from September 2026, ongoing. Messaging is about the school's identity. No dates or enrolment deadlines.</p>
+
+    <table>
+      <tr><th>Setting</th><th>Value</th></tr>
+      <tr><td>Ad set name</td><td>SASS 2027 | EAC | Evergreen | School Identity | Leads</td></tr>
+      <tr><td>Schedule</td><td>2 Sep 2026 &ndash; Ongoing</td></tr>
+      <tr><td>Saved audience</td><td>Safely Anchored Small School Leads</td></tr>
+      <tr><td>Locations (Controls)</td><td>Parklands Western Cape, Bloubergstrand Western Cape, Sunningdale Western Cape</td></tr>
+      <tr><td>Minimum age (Controls)</td><td>25</td></tr>
+      <tr><td>Languages (Controls)</td><td>English (US), English (UK), Afrikaans</td></tr>
+      <tr><td>Age (Advantage+ suggestions)</td><td>25&ndash;50</td></tr>
+      <tr><td>Detailed targeting (Advantage+ suggestions)</td><td>Parents with pre-schoolers (3&ndash;5), Parents with primary school-age children (6&ndash;8), Parents with pre-teens (9&ndash;12)</td></tr>
+      <tr><td>Placements</td><td>Advantage+ placements, Audience Network excluded</td></tr>
+      <tr><td>Conversion location</td><td>Website</td></tr>
+      <tr><td>Performance goal</td><td>Maximise number of leads</td></tr>
+      <tr><td>Estimated audience size</td><td>39,600 &ndash; 46,600</td></tr>
+    </table>
+
+    <img src="images/img_13.png" class="screenshot" alt="Audience controls">
+    <img src="images/img_14.png" class="screenshot" alt="Audience definition and size">
+
+    <div class="tip-box">
+      <strong>Tip:</strong> The audience has two layers. <strong>Controls</strong> (locations, minimum age, language) are hard limits &mdash; ads will not show outside these. <strong>Advantage+ suggestions</strong> (age range, detailed targeting) are flexible &mdash; Meta may expand beyond these if it finds people likely to convert. With Advantage+ on, Meta uses your controls as the floor and its own modelling to find the best leads within and slightly beyond your suggestions.
+    </div>
+
+    <h3>Ad Set 2 &mdash; Enrolment Season</h3>
+    <p>Activates October 2026, runs through January 2027. Time-sensitive messaging about January 2027 enrolment.</p>
+
+    <table>
+      <tr><th>Setting</th><th>Value</th></tr>
+      <tr><td>Ad set name</td><td>SASS 2027 | EAC | Enrolment Season | Leads</td></tr>
+      <tr><td>Schedule</td><td>2 Sep 2026 &ndash; 31 Jan 2027 (152 days)</td></tr>
+      <tr><td>Audience</td><td>Same as Ad Set 1</td></tr>
+      <tr><td>Conversion location</td><td>Website</td></tr>
+      <tr><td>Performance goal</td><td>Maximise number of leads</td></tr>
+    </table>
+
+    <p>Both ad sets share the same audience. A parent may see an evergreen ad about small class sizes and then an enrolment season ad about January 2027 places a few days later.</p>
+
+    <img src="images/img_15.png" class="screenshot" alt="Ad set conversion settings">
+
+    <div class="tip-box">
+      <strong>Tip:</strong> The Dataset (pixel) is required to publish when optimising for leads on a website. Shireen needs to create this from her admin account &mdash; see Section 8 (Notes).
+    </div>
+
+    <hr>
+
+    <!-- 5. Ads -->
+    <h2 id="ads">5. Ads</h2>
+
+    <h3>How UTM tracking works</h3>
+
+    <p>Each ad links to the landing page with UTM parameters in the URL. These tags let Google Analytics record where each visitor came from and which ad they clicked.</p>
+
+    <table>
+      <tr><th>Parameter</th><th>What it tracks</th><th>Value</th></tr>
+      <tr><td><code>utm_source</code></td><td>Platform</td><td><code>facebook</code> (for both Facebook and Instagram)</td></tr>
+      <tr><td><code>utm_medium</code></td><td>Traffic type</td><td><code>paid</code></td></tr>
+      <tr><td><code>utm_campaign</code></td><td>Campaign name</td><td><code>enrolment_2027</code></td></tr>
+      <tr><td><code>utm_content</code></td><td>Ad variant</td><td>Different per ad (see each ad below)</td></tr>
+    </table>
+
+    <h3>Where these go in Ads Manager</h3>
+
+    <p>Each ad has three URL-related fields. Here's where each piece goes:</p>
+
+    <div class="screenshot-pair">
+      <img src="images/img_16.png" alt="Website URL field in Ads Manager">
+      <img src="images/img_17.png" alt="URL parameters field in Tracking section">
+    </div>
+
+    <div class="tip-box">
+      <strong>Tip:</strong> The <strong>Website URL</strong> contains the full link including UTM parameters. The <strong>Display link</strong> is the clean URL that the user sees below the ad. The <strong>URL parameter</strong> (under Tracking) only needs the <code>utm_content</code> value &mdash; change this for each ad so you can tell which one drove a lead.
+    </div>
+
+    <hr>
+
+    <h3>Ad Set 1 &mdash; Evergreen Ads</h3>
+
+    <div class="ad-card">
+      <div class="ad-card-title">Ad 1: "Twenty children and a teacher who knows them all"</div>
+      <div class="ad-card-format">Video (15&ndash;20s) preferred. Single steady classroom clip, no voiceover, no music, no logo intro. Fallback: one strong classroom photo.</div>
+
+      <h4>Primary text (caption)</h4>
+      <div class="ad-copy">Safely Anchored has a maximum of 20 children per class. Our teachers know each child's name, where they are at academically, and what they need in order to thrive.
+
+We're an independent Christian primary school in Sunningdale, Grade R to Grade 5. We follow the CAPS curriculum.
+
+You've seen our buses in the area for years. The school grew out of the same family and the same community.
+
+Book a visit and see if Safely Anchored is the right place for your child.</div>
+
+      <div class="ad-meta">
+        <div class="ad-meta-row"><span class="ad-meta-label">Headline</span><span>A small school in Sunningdale where the teacher knows every child</span></div>
+        <div class="ad-meta-row"><span class="ad-meta-label">Link description</span><span>Independent Christian primary school &middot; Sunningdale</span></div>
+        <div class="ad-meta-row"><span class="ad-meta-label">CTA button</span><span>Learn More</span></div>
+      </div>
+
+      <div class="ad-urls">
+        <h4>Ads Manager URLs</h4>
+        <div class="ad-url-row"><span class="ad-url-label">Website URL</span><span class="ad-url-value">https://www.safelyanchored.co.za/enrol-2027?utm_source=facebook&amp;utm_medium=paid&amp;utm_campaign=enrolment_2027&amp;utm_content=known_by_name</span></div>
+        <div class="ad-url-row"><span class="ad-url-label">Display link</span><span class="ad-url-value">www.safelyanchored.co.za</span></div>
+        <div class="ad-url-row"><span class="ad-url-label">URL parameter</span><span class="ad-url-value">known_by_name</span></div>
+      </div>
+    </div>
+
+    <div class="ad-card">
+      <div class="ad-card-title">Ad 2: Parent testimonial &mdash; Lauren F</div>
+      <div class="ad-card-format">Static image. Warm school photo, no text overlay. Testimonial in caption. Different photo from Ad 1.</div>
+
+      <h4>Primary text (caption)</h4>
+      <div class="ad-copy">"Coming out of homeschooling my two children for a year, I was looking for a small, nurturing school environment with solid values. Safely Anchored was an answered prayer! My two boys love going to school and have made really good academic progress." - Lauren F
+
+Lauren's boys are two of our amazing students at Safely Anchored Small School in Sunningdale. Our classes have a maximum of 20 children and run from Grade R to Grade 5 (2027).
+
+Book a visit and see if Safely Anchored is where your child belongs.</div>
+
+      <div class="ad-meta">
+        <div class="ad-meta-row"><span class="ad-meta-label">Headline</span><span>Why one family chose Safely Anchored</span></div>
+        <div class="ad-meta-row"><span class="ad-meta-label">Link description</span><span>Grade R to Grade 5 &middot; Sunningdale</span></div>
+        <div class="ad-meta-row"><span class="ad-meta-label">CTA button</span><span>Learn More</span></div>
+      </div>
+
+      <div class="ad-urls">
+        <h4>Ads Manager URLs</h4>
+        <div class="ad-url-row"><span class="ad-url-label">Website URL</span><span class="ad-url-value">https://www.safelyanchored.co.za/enrol-2027?utm_source=facebook&amp;utm_medium=paid&amp;utm_campaign=enrolment_2027&amp;utm_content=testimonial_lauren</span></div>
+        <div class="ad-url-row"><span class="ad-url-label">Display link</span><span class="ad-url-value">www.safelyanchored.co.za</span></div>
+        <div class="ad-url-row"><span class="ad-url-label">URL parameter</span><span class="ad-url-value">testimonial_lauren</span></div>
+      </div>
+    </div>
+
+    <div class="ad-card">
+      <div class="ad-card-title">Ad 3: "When you know it's time for a different school"</div>
+      <div class="ad-card-format">Video (15&ndash;20s) or static image. Calm one-on-one classroom moment. Creative should feel attentive and unhurried.</div>
+
+      <h4>Primary text (caption)</h4>
+      <div class="ad-copy">Has your child stopped looking forward to school?
+
+When a child starts resisting mornings or losing confidence, it often comes down to the classroom. Some children do better in a smaller setting where the teacher has time to work with them individually.
+
+Book a visit and see if Safely Anchored Small School is the change your child needs.
+
+We are an independent Christian primary school in Sunningdale with a maximum of 20 children per class, Grade R to Grade 5.</div>
+
+      <div class="ad-meta">
+        <div class="ad-meta-row"><span class="ad-meta-label">Headline</span><span>A smaller school can make a real difference</span></div>
+        <div class="ad-meta-row"><span class="ad-meta-label">Link description</span><span>Max 20 per class &middot; Grade R to Grade 5 &middot; Sunningdale</span></div>
+        <div class="ad-meta-row"><span class="ad-meta-label">CTA button</span><span>Learn More</span></div>
+      </div>
+
+      <div class="ad-urls">
+        <h4>Ads Manager URLs</h4>
+        <div class="ad-url-row"><span class="ad-url-label">Website URL</span><span class="ad-url-value">https://www.safelyanchored.co.za/enrol-2027?utm_source=facebook&amp;utm_medium=paid&amp;utm_campaign=enrolment_2027&amp;utm_content=switching_schools</span></div>
+        <div class="ad-url-row"><span class="ad-url-label">Display link</span><span class="ad-url-value">www.safelyanchored.co.za</span></div>
+        <div class="ad-url-row"><span class="ad-url-label">URL parameter</span><span class="ad-url-value">switching_schools</span></div>
+      </div>
+    </div>
+
+    <h3>Ad Set 2 &mdash; Enrolment Season Ads</h3>
+
+    <div class="ad-card">
+      <div class="ad-card-title">Ad 4: "Their first big school year"</div>
+      <div class="ad-card-format">Video (10&ndash;15s) or static image. Grade R classroom &mdash; painting, building, sitting on the mat. Gentle and structured.</div>
+
+      <h4>Primary text (caption)</h4>
+      <div class="ad-copy">Choosing your child's first school is one of the bigger decisions you'll make as a parent.
+
+At Safely Anchored, Grade R classes follow the full CAPS curriculum with no more than 20 children per class. This offers enough structure to build a strong foundation, and enough warmth for a five-year-old to feel safe and settled.
+
+We're an independent Christian primary school in Sunningdale, enrolling for January 2027.
+
+Book a visit and come see our Grade R class in action.</div>
+
+      <div class="ad-meta">
+        <div class="ad-meta-row"><span class="ad-meta-label">Headline</span><span>Grade R at Safely Anchored Small School</span></div>
+        <div class="ad-meta-row"><span class="ad-meta-label">Link description</span><span>Enrolling for January 2027 &middot; Sunningdale</span></div>
+        <div class="ad-meta-row"><span class="ad-meta-label">CTA button</span><span>Learn More</span></div>
+      </div>
+
+      <div class="ad-urls">
+        <h4>Ads Manager URLs</h4>
+        <div class="ad-url-row"><span class="ad-url-label">Website URL</span><span class="ad-url-value">https://www.safelyanchored.co.za/enrol-2027?utm_source=facebook&amp;utm_medium=paid&amp;utm_campaign=enrolment_2027&amp;utm_content=grade_r_transition</span></div>
+        <div class="ad-url-row"><span class="ad-url-label">Display link</span><span class="ad-url-value">www.safelyanchored.co.za</span></div>
+        <div class="ad-url-row"><span class="ad-url-label">URL parameter</span><span class="ad-url-value">grade_r_transition</span></div>
+      </div>
+    </div>
+
+    <div class="ad-card">
+      <div class="ad-card-title">Ad 5: "The school behind the buses"</div>
+      <div class="ad-card-format">Video (15&ndash;20s). Bus pulling up + children walking in. Alternative: school morning starting. Fallback: photo of entrance.</div>
+
+      <h4>Primary text (caption)</h4>
+      <div class="ad-copy">You've seen our buses in the area for years. The school grew out of the same family and the same community.
+
+Safely Anchored is an independent primary school in Sunningdale, Grade R to Grade 5. No more than 20 children per class. CAPS curriculum with Christian values at the centre.
+
+We're currently enrolling for January 2027.
+
+Book a visit and see if Safely Anchored Small School is where your child will thrive.</div>
+
+      <div class="ad-meta">
+        <div class="ad-meta-row"><span class="ad-meta-label">Headline</span><span>There's a school behind the Safely Anchored buses</span></div>
+        <div class="ad-meta-row"><span class="ad-meta-label">Link description</span><span>Enrolling for January 2027 &middot; Sunningdale</span></div>
+        <div class="ad-meta-row"><span class="ad-meta-label">CTA button</span><span>Learn More</span></div>
+      </div>
+
+      <div class="ad-urls">
+        <h4>Ads Manager URLs</h4>
+        <div class="ad-url-row"><span class="ad-url-label">Website URL</span><span class="ad-url-value">https://www.safelyanchored.co.za/enrol-2027?utm_source=facebook&amp;utm_medium=paid&amp;utm_campaign=enrolment_2027&amp;utm_content=school_behind_buses</span></div>
+        <div class="ad-url-row"><span class="ad-url-label">Display link</span><span class="ad-url-value">www.safelyanchored.co.za</span></div>
+        <div class="ad-url-row"><span class="ad-url-label">URL parameter</span><span class="ad-url-value">school_behind_buses</span></div>
+      </div>
+    </div>
+
+    <div class="ad-card">
+      <div class="ad-card-title">Ad 6: Parent testimonial &mdash; Carrie-Anne D</div>
+      <div class="ad-card-format">Static image. School photo, no text overlay. Testimonial in caption. Different photo from Ad 2.</div>
+
+      <h4>Primary text (caption)</h4>
+      <div class="ad-copy">"Every child is known by name and genuinely loved." - Carrie-Anne D
+
+Carrie-Anne's child is at Safely Anchored Small School in Sunningdale, where classes have a maximum of 20 children and teachers have the space to give each child individual attention.
+
+We're enrolling for January 2027, Grade R to Grade 5. Book a visit and see the school for yourself.</div>
+
+      <div class="ad-meta">
+        <div class="ad-meta-row"><span class="ad-meta-label">Headline</span><span>Enrolling now for January 2027</span></div>
+        <div class="ad-meta-row"><span class="ad-meta-label">Link description</span><span>Independent Christian primary school &middot; Sunningdale</span></div>
+        <div class="ad-meta-row"><span class="ad-meta-label">CTA button</span><span>Learn More</span></div>
+      </div>
+
+      <div class="ad-urls">
+        <h4>Ads Manager URLs</h4>
+        <div class="ad-url-row"><span class="ad-url-label">Website URL</span><span class="ad-url-value">https://www.safelyanchored.co.za/enrol-2027?utm_source=facebook&amp;utm_medium=paid&amp;utm_campaign=enrolment_2027&amp;utm_content=testimonial_carrie_anne</span></div>
+        <div class="ad-url-row"><span class="ad-url-label">Display link</span><span class="ad-url-value">www.safelyanchored.co.za</span></div>
+        <div class="ad-url-row"><span class="ad-url-label">URL parameter</span><span class="ad-url-value">testimonial_carrie_anne</span></div>
+      </div>
+    </div>
+
+    <hr>
+
+    <!-- 6. Budget -->
+    <h2 id="budget">6. Budget</h2>
+
+    <div class="tip-box">
+      <strong>Tip:</strong> The daily budget is set at campaign level (see Section 3). To change the monthly spend, update the daily budget in the campaign settings. Meta may spend up to ~1.75x the daily budget on a given day but will average out over the week.
+    </div>
+
+    <div class="table-wrap">
+    <table>
+      <tr><th>Month</th><th>Monthly</th><th>Daily</th><th>Evergreen</th><th>Enrolment Season</th><th>Notes</th></tr>
+      <tr><td>September</td><td>R2,000</td><td>R67/day</td><td>Active (3 ads)</td><td>Paused</td><td>Campaign goes live. Learning phase: no changes for 7&ndash;10 days.</td></tr>
+      <tr><td>October</td><td>R3,000</td><td>R97/day</td><td>Active</td><td>Activated (3 ads)</td><td>Peak period after WCED placement outcomes.</td></tr>
+      <tr><td>November</td><td>R2,000</td><td>R67/day</td><td>Active</td><td>Active</td><td>Maintain visibility.</td></tr>
+      <tr><td>December</td><td>R2,000</td><td>R65/day</td><td>Active</td><td>Active</td><td>Holiday period. Late deciders still active.</td></tr>
+      <tr><td>January</td><td>R3,000</td><td>R97/day</td><td>Active</td><td>Active &rarr; paused end of Jan</td><td>Final push before Term 1.</td></tr>
+      <tr><td><strong>Total</strong></td><td><strong>R12,000</strong></td><td></td><td></td><td></td><td></td></tr>
+    </table>
+    </div>
+
+    <h3>The learning phase</h3>
+    <p>When the campaign launches, Meta needs roughly 50 lead events to learn which people are most likely to submit the form. This takes about 7&ndash;10 days. Cost per lead will be higher during this period. Do not change targeting, budget, or creative during this window &mdash; each change resets the learning phase.</p>
+    <p>At R2,000 for September and an estimated cost per lead of R30&ndash;R80, expect between 25 and 65 form submissions in the first month.</p>
+
+    <h3>Monthly review</h3>
+
+    <table>
+      <tr><th>#</th><th>Metric</th><th>Where to find it</th></tr>
+      <tr><td>1</td><td>How many leads came in?</td><td>Google Sheet (form submissions)</td></tr>
+      <tr><td>2</td><td>Cost per lead?</td><td>Meta Ads Manager</td></tr>
+      <tr><td>3</td><td>Which ads generated the most leads?</td><td>Meta Ads Manager</td></tr>
+      <tr><td>4</td><td>Which ads have the lowest cost per lead?</td><td>Meta Ads Manager</td></tr>
+      <tr><td>5</td><td>How many leads booked a visit?</td><td>School's own records</td></tr>
+      <tr><td>6</td><td>How many visited and enrolled?</td><td>School's own records</td></tr>
+    </table>
+
+    <p>If an ad is consistently underperforming (high spend, few leads), pause it and let Meta direct spend to the remaining ads.</p>
+
+    <h3>Frequency monitoring</h3>
+
+    <p>Frequency is the average number of times each person has seen your ad. A frequency of 2&ndash;3 per week is healthy for this campaign. If it climbs above 4&ndash;5, parents are seeing the same ad too often and cost per lead will start rising.</p>
+
+    <p><strong>How to check:</strong> In Ads Manager, go to "Columns: Performance" &rarr; "Customise Columns" &rarr; search for "Frequency" and add it to your reporting view.</p>
+
+    <p><strong>What to do if frequency gets too high:</strong> swap in a new photo or video on the ad that's been running longest, or broaden the audience slightly (add Table View as a location, or widen the age range). Either move gives Meta fresh room to work with.</p>
+
+    <div class="tip-box">
+      <strong>Tip:</strong> Frequency is unlikely to be a problem in the first two months with an audience of ~40,000 and a daily budget of R67. It becomes more relevant from December onward, when the same audience has been seeing ads for four months. The Enrolment Season ads activating in October naturally help by giving the audience fresh creative.
+    </div>
+
+    <hr>
+
+    <!-- 7. Timeline -->
+    <h2 id="timeline">7. Timeline</h2>
+
+    <table>
+      <tr><th>When</th><th>What</th></tr>
+      <tr><td>Before launch</td><td>School provides photos and video clips. Elzanne builds creative and uploads to Ads Manager.</td></tr>
+      <tr><td>September 1&ndash;7</td><td>Campaign goes live with Evergreen ad set (3 ads). Learning phase. No changes.</td></tr>
+      <tr><td>September 8&ndash;30</td><td>Monitor performance. First leads arrive. School follows up from Google Sheet.</td></tr>
+      <tr><td>Early October</td><td>Activate Enrolment Season ad set (3 ads). Update daily budget to R97.</td></tr>
+      <tr><td>October&ndash;November</td><td>Review monthly. Pause underperformers.</td></tr>
+      <tr><td>December</td><td>Maintain at R65/day. Campaign stays live for late deciders.</td></tr>
+      <tr><td>January</td><td>Final push at R97/day. Pause Enrolment Season ad set end of January.</td></tr>
+      <tr><td>Post-January</td><td>Decide whether to continue Evergreen at a lower budget for 2028, or pause.</td></tr>
+    </table>
+
+    <hr>
+
+    <!-- 8. Notes -->
+    <h2 id="notes">8. Notes</h2>
+
+    <p><strong>Grade filtering:</strong> Meta's parental targeting brackets (3&ndash;5, 6&ndash;8, 9&ndash;12 years) don't map precisely to school grades. The ad copy names specific grades so parents self-select.</p>
+
+    <p><strong>Afrikaans:</strong> Initial launch is English only. Afrikaans versions should be added as additional ads inside the existing ad sets, not as separate ad sets.</p>
+
+    <p><strong>Landing page URL:</strong> All ads point to <code>safelyanchored.co.za/enrol-2027</code>. If the URL changes, update it in each ad's Website URL field and keep the UTM parameters the same.</p>
+
+    <p><strong>POPIA:</strong> The landing page form includes a consent checkbox. A broader privacy notice for marketing leads is worth putting in place.</p>
+
+    <p><strong>Meta Pixel (Dataset):</strong> Not yet installed. Shireen needs to create the pixel ("SASS Website Pixel") from her admin account. Without it, the ads cannot be published when optimising for website leads. This is on the agenda for the Friday meeting.</p>
+
+    <!-- 9. Practical Tips -->
+    <h2 id="tips">9. Practical Tips for Managing Ads Manager</h2>
+
+    <div class="tip-box">
+      <strong>The golden rule:</strong> Don't panic-edit. The most common mistake with a small budget is changing things too quickly. If cost per lead looks high in the first week, that's Meta's algorithm warming up. Give it 7&ndash;10 days before drawing conclusions.
+    </div>
+
+    <h3>Draft, Active, and Paused</h3>
+    <p>Ads in Ads Manager have three states. <strong>Draft</strong> means the ad hasn't been published yet &mdash; it's saved but not running. <strong>Active</strong> means it's live and spending budget. <strong>Paused</strong> means it's stopped but all its settings and learning data are preserved. You can unpause an ad at any time and it picks up where it left off.</p>
+    <p>If an ad isn't working, <strong>pause it rather than deleting it</strong>. Deleting is permanent and loses the ad's history. Pausing keeps everything intact in case you want to revisit it later.</p>
+
+    <h3>Changing the budget</h3>
+    <p>When changing the daily budget (for example from R67 to R97 in October), make the change at the start of the month. Avoid increases of more than 20% at a time &mdash; a large jump can reset the learning phase. If you need to go from R67 to R97, that's a 45% increase, so you could step it up to R80 for a few days first and then to R97.</p>
+
+    <h3>Don't boost posts from the Facebook page</h3>
+    <p>After this training, it might be tempting to hit the "Boost Post" button on the school's Facebook or Instagram page. This creates a separate campaign in Meta's simplified interface with weaker targeting and optimisation than what's set up in Ads Manager. All paid advertising should go through Ads Manager to keep the leads objective and audience targeting intact.</p>
+
+    <h3>Ad rejections</h3>
+    <p>Meta sometimes rejects ads for policy reasons that aren't obvious &mdash; an image with too much text overlay, or a word in the copy that triggers a flag. If an ad gets rejected, Ads Manager will show a notification with the reason and an option to request a manual review. This is common and usually resolved within a day or two. Don't rework the ad before requesting a review first.</p>
+
+    <h3>Spending alerts</h3>
+    <p>You can set up email notifications for when spending crosses a threshold or when an ad is approved/rejected. Go to <strong>Ads Manager &rarr; Account Settings &rarr; Notifications</strong> to configure these. This means you don't have to log in to Ads Manager every day to check whether things are running.</p>
+
+    <h3>What the columns in Ads Manager mean</h3>
+    <p>The default reporting view shows a lot of numbers. The ones that matter for this campaign are:</p>
+
+    <table>
+      <tr><th>Column</th><th>What it means</th></tr>
+      <tr><td>Results</td><td>The number of leads (form submissions) the ad generated</td></tr>
+      <tr><td>Cost per result</td><td>How much each lead cost (total spend &divide; number of leads)</td></tr>
+      <tr><td>Amount spent</td><td>Total spend on that ad, ad set, or campaign</td></tr>
+      <tr><td>Impressions</td><td>How many times the ad was shown (one person can see it multiple times)</td></tr>
+      <tr><td>Reach</td><td>How many unique people saw the ad</td></tr>
+      <tr><td>Frequency</td><td>Average times each person saw the ad (Impressions &divide; Reach). Add this column manually &mdash; see Section 6.</td></tr>
+      <tr><td>CTR (link click-through rate)</td><td>Percentage of people who clicked the ad link. Useful but secondary &mdash; leads matter more than clicks.</td></tr>
+    </table>
+
+    <div class="tip-box">
+      <strong>Tip:</strong> Focus on <strong>Results</strong> (leads) and <strong>Cost per result</strong> (cost per lead). These are the numbers that connect directly to enrolments. CTR and Impressions are useful context but don't tell you whether parents are filling in the form.
+    </div>
+
+    <p class="doc-footer">Elzanne Amao &middot; Content and communications strategy &middot; Cape Town</p>
+
+  </div>
+</main>
+
+</body>
+</html>
