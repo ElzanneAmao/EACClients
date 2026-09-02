@@ -45,13 +45,6 @@
     overflow-y: auto;
   }
 
-  .sidebar-logo {
-    display: block;
-    width: 120px;
-    margin: 0 24px 24px;
-    border-radius: 4px;
-  }
-
   .sidebar-brand {
     padding: 0 24px 28px;
     border-bottom: 1px solid rgba(184, 205, 212, 0.15);
@@ -117,28 +110,6 @@
   .sidebar nav a.active .material-symbols-outlined,
   .sidebar nav a:hover .material-symbols-outlined { opacity: 1; }
 
-  .sidebar-footer {
-    margin-top: auto;
-    padding: 24px;
-    border-top: 1px solid rgba(184, 205, 212, 0.15);
-  }
-
-  .sidebar-footer a {
-    display: inline-flex;
-    align-items: center;
-    gap: 6px;
-    font-weight: 500;
-    font-size: 13px;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--seaglass);
-    opacity: 0.7;
-    text-decoration: none;
-    transition: opacity 0.15s;
-  }
-
-  .sidebar-footer a:hover { opacity: 1; }
-
   /* ── Mobile Nav ────────────────────────────── */
   .mobile-nav {
     display: flex;
@@ -156,22 +127,6 @@
     font-weight: 500;
     font-size: 1.15rem;
     color: var(--coolwhite);
-  }
-
-  .mobile-nav .back-link {
-    font-weight: 500;
-    font-size: 13px;
-    color: var(--seaglass);
-    text-decoration: none;
-    display: flex;
-    align-items: center;
-    gap: 4px;
-  }
-
-  .mobile-nav .logo-small {
-    width: 32px;
-    height: 32px;
-    border-radius: 3px;
   }
 
   /* ── Main Content ──────────────────────────── */
@@ -488,6 +443,46 @@
 
   .link-button:hover { background: var(--moss); color: var(--white); }
 
+  /* ── Video Cards ────────────────────────────── */
+  .video-card {
+    background: var(--white);
+    border: 1px solid var(--hairline);
+    border-left: 3px solid var(--seaglass);
+    margin: 20px 0;
+    overflow: hidden;
+  }
+
+  .video-embed {
+    position: relative;
+    width: 100%;
+    padding-top: 56.25%;
+    background: #000;
+  }
+
+  .video-embed iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  .video-info {
+    padding: 16px 20px;
+  }
+
+  .video-info h3 {
+    margin-top: 0;
+    margin-bottom: 6px;
+    font-size: 16px;
+  }
+
+  .video-info p {
+    font-size: 14px;
+    color: var(--sage);
+    margin-bottom: 0;
+  }
+
   /* ── Footer ────────────────────────────────── */
   .doc-footer {
     margin-top: 60px;
@@ -525,22 +520,17 @@
 
 <!-- Mobile Navigation -->
 <nav class="mobile-nav">
-  <a href="../../index.html" class="back-link">
-    <span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span>
-    EAC
-  </a>
-  <img src="../../assets/logo.svg" alt="EAC" class="logo-small">
+  <h2>Safely Anchored</h2>
 </nav>
 
 <!-- Desktop Sidebar -->
 <aside class="sidebar">
-  <img src="../../assets/logo.svg" alt="EAC" class="sidebar-logo">
   <div class="sidebar-brand">
     <h2>Elzanne Amao Consulting</h2>
     <div class="client-label">Safely Anchored Small School</div>
   </div>
   <nav>
-    <a href="#top" class="active">
+    <a href="#top">
       <span class="material-symbols-outlined">dashboard</span>
       Overview
     </a>
@@ -576,13 +566,15 @@
       <span class="material-symbols-outlined">lightbulb</span>
       Practical Tips
     </a>
-  </nav>
-  <div class="sidebar-footer">
-    <a href="../../index.html">
-      <span class="material-symbols-outlined" style="font-size:18px;">arrow_back</span>
-      All Clients
+    <a href="#notes">
+      <span class="material-symbols-outlined">sticky_note_2</span>
+      Notes
     </a>
-  </div>
+    <a href="#training">
+      <span class="material-symbols-outlined">play_circle</span>
+      Training Material
+    </a>
+  </nav>
 </aside>
 
 <!-- Main Content -->
@@ -1010,21 +1002,8 @@ We're enrolling for January 2027, Grade R to Grade 5. Book a visit and see the s
 
     <hr>
 
-    <!-- 8. Notes -->
-    <h2 id="notes">8. Notes</h2>
-
-    <p><strong>Grade filtering:</strong> Meta's parental targeting brackets (3&ndash;5, 6&ndash;8, 9&ndash;12 years) don't map precisely to school grades. The ad copy names specific grades so parents self-select.</p>
-
-    <p><strong>Afrikaans:</strong> Initial launch is English only. Afrikaans versions should be added as additional ads inside the existing ad sets, not as separate ad sets.</p>
-
-    <p><strong>Landing page URL:</strong> All ads point to <code>safelyanchored.co.za/enrol-2027</code>. If the URL changes, update it in each ad's Website URL field and keep the UTM parameters the same.</p>
-
-    <p><strong>POPIA:</strong> The landing page form includes a consent checkbox. A broader privacy notice for marketing leads is worth putting in place.</p>
-
-    <p><strong>Meta Pixel (Dataset):</strong> Not yet installed. Shireen needs to create the pixel ("SASS Website Pixel") from her admin account. Without it, the ads cannot be published when optimising for website leads. This is on the agenda for the Friday meeting.</p>
-
-    <!-- 9. Practical Tips -->
-    <h2 id="tips">9. Practical Tips for Managing Ads Manager</h2>
+    <!-- 8. Practical Tips -->
+    <h2 id="tips">8. Practical Tips for Managing Ads Manager</h2>
 
     <div class="tip-box">
       <strong>The golden rule:</strong> Don't panic-edit. The most common mistake with a small budget is changing things too quickly. If cost per lead looks high in the first week, that's Meta's algorithm warming up. Give it 7&ndash;10 days before drawing conclusions.
@@ -1064,10 +1043,95 @@ We're enrolling for January 2027, Grade R to Grade 5. Book a visit and see the s
       <strong>Tip:</strong> Focus on <strong>Results</strong> (leads) and <strong>Cost per result</strong> (cost per lead). These are the numbers that connect directly to enrolments. CTR and Impressions are useful context but don't tell you whether parents are filling in the form.
     </div>
 
+    <hr>
+
+    <!-- 9. Notes -->
+    <h2 id="notes">9. Notes</h2>
+
+    <p><strong>Grade filtering:</strong> Meta's parental targeting brackets (3&ndash;5, 6&ndash;8, 9&ndash;12 years) don't map precisely to school grades. The ad copy names specific grades so parents self-select.</p>
+
+    <p><strong>Afrikaans:</strong> Initial launch is English only. Afrikaans versions should be added as additional ads inside the existing ad sets, not as separate ad sets.</p>
+
+    <p><strong>Landing page URL:</strong> All ads point to <code>safelyanchored.co.za/enrol-2027</code>. If the URL changes, update it in each ad's Website URL field and keep the UTM parameters the same.</p>
+
+    <p><strong>POPIA:</strong> The landing page form includes a consent checkbox. A broader privacy notice for marketing leads is worth putting in place.</p>
+
+    <p><strong>Meta Pixel (Dataset):</strong> Not yet installed. Shireen needs to create the pixel ("SASS Website Pixel") from her admin account. Without it, the ads cannot be published when optimising for website leads. This is on the agenda for the Friday meeting.</p>
+
+    <hr>
+
+    <!-- 10. External Training Material -->
+    <h2 id="training">10. External Training Material</h2>
+
+    <p>These video tutorials cover the fundamentals of setting up and running Meta ads. Watch them in order for a solid grounding, or dip in as reference when working through a specific step in Ads Manager.</p>
+
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/t-6c16BH-0U" title="How to Run Meta Ads For Beginners" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h3>How to Run Meta Ads For Beginners</h3>
+        <p>Meta Ads Tutorial 2026 &mdash; A comprehensive walkthrough of setting up your first Meta advertising campaign from scratch.</p>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/h839wnSKZXs" title="Facebook Ads Tutorial - 2026 Full Guide for Beginners" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h3>Facebook Ads Tutorial</h3>
+        <p>2026 Full Guide for Beginners &mdash; Step-by-step guide covering campaign creation, audience targeting, and budget management.</p>
+      </div>
+    </div>
+
+    <div class="video-card">
+      <div class="video-embed">
+        <iframe src="https://www.youtube.com/embed/fkZSqrqwjW0" title="How to Write Meta Ad Copy That Converts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+      <div class="video-info">
+        <h3>How to Write Meta Ad Copy That Converts</h3>
+        <p>Facebook Ad Copywriting Tutorial &mdash; Practical techniques for writing ad text that drives action, directly relevant to the ads in this strategy.</p>
+      </div>
+    </div>
+
     <p class="doc-footer">Elzanne Amao &middot; Content and communications strategy &middot; Cape Town</p>
 
   </div>
 </main>
 
+<script>
+(function() {
+  var links = document.querySelectorAll('.sidebar nav a');
+  var sections = [];
+  links.forEach(function(link) {
+    var id = link.getAttribute('href').replace('#', '');
+    var el = document.getElementById(id);
+    if (el) sections.push({ id: id, el: el, link: link });
+  });
+
+  function update() {
+    var scrollY = document.querySelector('.main-content').scrollTop || window.scrollY;
+    var current = sections[0];
+    for (var i = 0; i < sections.length; i++) {
+      if (sections[i].el.offsetTop - 120 <= scrollY) current = sections[i];
+    }
+    links.forEach(function(l) { l.classList.remove('active'); });
+    if (current) current.link.classList.add('active');
+  }
+
+  var main = document.querySelector('.main-content');
+  if (main) main.addEventListener('scroll', update);
+  window.addEventListener('scroll', update);
+  update();
+
+  links.forEach(function(link) {
+    link.addEventListener('click', function() {
+      links.forEach(function(l) { l.classList.remove('active'); });
+      this.classList.add('active');
+    });
+  });
+})();
+</script>
 </body>
 </html>
