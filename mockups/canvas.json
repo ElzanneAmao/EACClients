@@ -1,0 +1,15 @@
+{
+  "artboards": [
+    { "file": "Main.dc.html", "x": 0, "y": 0, "w": 375, "h": 700, "title": "Ad 1 — Evergreen" },
+    { "file": "Ad2.dc.html", "x": 460, "y": 0, "w": 375, "h": 700, "title": "Ad 2 — Evergreen" },
+    { "file": "Ad3.dc.html", "x": 920, "y": 0, "w": 375, "h": 700, "title": "Ad 3 — Evergreen" },
+    { "file": "Ad4.dc.html", "x": 0, "y": 840, "w": 375, "h": 700, "title": "Ad 4 — Enrolment" },
+    { "file": "Ad5.dc.html", "x": 460, "y": 840, "w": 375, "h": 700, "title": "Ad 5 — Enrolment" },
+    { "file": "Ad6.dc.html", "x": 920, "y": 840, "w": 375, "h": 700, "title": "Ad 6 — Enrolment" }
+  ],
+  "annotations": [
+    { "id": "row-1-label", "x": 0, "y": -80, "w": 300, "text": "Evergreen Ads (Ad Set 1)\nRun from September 2026, ongoing" },
+    { "id": "row-2-label", "x": 0, "y": 760, "w": 300, "text": "Enrolment Season Ads (Ad Set 2)\nOctober 2026 through January 2027" }
+  ],
+  "launch": { "view": "canvas" }
+}
